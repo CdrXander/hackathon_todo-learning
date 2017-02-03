@@ -14,7 +14,9 @@ app.use(session({saveUninitialized: true, resave: false, secret: config.sessionS
 app.use(express.static(__dirname +'/public'));
 
 //Local File modules AFTER app initialization
-var databaseController = require('./databaseController.js');
+var databaseController 	= require('./databaseController.js');
+var accountController 	= require('./accountController.js');
+
 
 //Connect to DB
 var conn = massive.connectSync({
@@ -30,6 +32,13 @@ var db = app.get('db');
 
 //END POINTS	=	=	=	=	=	=	=	=	=
 
+//security
+app.post('/api/account/create', accountController.createAccount);
+app.post('/api/auth/login', accountController.loginAccount);
+app.post('/api/auth/logout', accountController.logoutAccount);
+app.get('/api/auth/currentuser', accountController.getCurrentUser);
+
+//Todo items
 app.get('/api/todo/list', databaseController.getAllToDoItems)
 
 //SPIN UP THE DRIVES!!

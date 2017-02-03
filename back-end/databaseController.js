@@ -16,3 +16,8 @@ function getAllToDoItems(req, res) {
 		}
 	})
 }
+
+
+// function getToDoItemsForUser(req,res) {
+
+// }
