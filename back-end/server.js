@@ -28,7 +28,13 @@ var db = app.get('db');
 
 //Authorization Middleware	=	=	=	=	=	=
 
-
+var authCheck = function(req,res,next) {
+	if(!!req.session.currentUser) {
+		next()
+	} else {
+		res.status(401).send("You must be logged in to use this resource");
+	}
+}
 
 //END POINTS	=	=	=	=	=	=	=	=	=
 
@@ -39,7 +45,8 @@ app.post('/api/auth/logout', accountController.logoutAccount);
 app.get('/api/auth/currentuser', accountController.getCurrentUser);
 
 //Todo items
-app.get('/api/todo/list', databaseController.getAllToDoItems)
+app.get('/api/todo/all', databaseController.getAllToDoItems)
+app.get('/api/todo/list', authCheck, databaseController.getToDoItemsForUser);
 
 //SPIN UP THE DRIVES!!
 app.listen(port, function() {

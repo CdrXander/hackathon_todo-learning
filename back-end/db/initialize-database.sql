@@ -49,6 +49,10 @@ INSERT INTO public.accounts
 	(id, email, password, password_salt)
 	VALUES (1, 'test@test.com', '9ba1f63365a6caf66e46348f43cdef956015bea997adeb06e69007ee3ff517df10fc5eb860da3d43b82c2a040c931119d2dfc6d08e253742293a868cc2d82015', 'test');
 
+INSERT INTO public.accounts 
+	(id, email, password, password_salt)
+	VALUES (2, 'test2@test2.com', 'test', 'test');
+
 INSERT INTO public.todo_items 
 	(id, account_id, todo_text, completion_time, priority)
 	VALUES(1,1,'Wash Laundry', 30,5);
@@ -60,3 +64,12 @@ INSERT INTO public.todo_items
 INSERT INTO public.todo_items 
 	(id, account_id, todo_text, completion_time, priority)
 	VALUES(3,1,'Slaughter Heathens', 240,1);
+
+INSERT INTO public.todo_items 
+	(id, account_id, todo_text, completion_time, priority)
+	VALUES(4,2,'Demo', 240,1);
+
+INSERT INTO public.todo_items 
+	(id, account_id, todo_text, completion_time, priority)
+	VALUES(5,2,'Demo', 240,1);
+

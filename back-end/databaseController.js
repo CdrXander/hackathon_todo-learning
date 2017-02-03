@@ -1,7 +1,8 @@
 var app = require('./server.js');
 
 module.exports = {
-	getAllToDoItems:getAllToDoItems
+	getAllToDoItems:getAllToDoItems,
+	getToDoItemsForUser:getToDoItemsForUser
 }
 
 function getAllToDoItems(req, res) {
@@ -18,6 +19,18 @@ function getAllToDoItems(req, res) {
 }
 
 
-// function getToDoItemsForUser(req,res) {
+function getToDoItemsForUser(req,res) {
+	var db = app.get('db');
 
-// }
+	var search = {
+		account_id:req.session.currentUser.id
+	}
+
+	db.todo_items.find(search, function(err, result) {
+		if(!err) {
+			res.status(200).send(result);
+		} else {
+			res.status(500).send(err);
+		}
+	})
+}
