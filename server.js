@@ -1,4 +1,3 @@
-//Put the api server here//Node modules import
 var express 	= require('express');
 var session		= require('express-session')
 var bodyParser 	= require('body-parser');
