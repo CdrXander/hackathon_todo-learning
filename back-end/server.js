@@ -47,6 +47,7 @@ app.get('/api/auth/currentuser', accountController.getCurrentUser);
 //Todo items
 app.get('/api/todo/all', databaseController.getAllToDoItems)
 app.get('/api/todo/list', authCheck, databaseController.getToDoItemsForUser);
+app.post('/api/todo/create', authCheck, databaseController.createToDoItem);
 
 //SPIN UP THE DRIVES!!
 app.listen(port, function() {

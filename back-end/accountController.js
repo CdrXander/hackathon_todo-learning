@@ -56,7 +56,7 @@ function loginAccount(req,res) {
 
 				if(passwordHash === result[0].password) {
 					req.session.currentUser = result[0];
-					res.status(200).send(req.session.currentUser);
+					res.status(200).send("User Logged In");
 				} else {
 					res.status(422).send("Incorrect email/password combination - password");
 				}

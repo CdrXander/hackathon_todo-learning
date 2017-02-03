@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="apiApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	
+	<!-- STYLESHEETS -->
+</head>
+<body ng-controller="apiController">
+
+	<div>
+		<input type="text" ng-model="email"/>
+		<input type="password" ng-model="password"/>
+		<button ng-click='login()'>Login</button>
+	</div>
+	<div>
+		{{loginResult}}
+	</div>
+	<div>
+		<button ng-click='logout()'>Logout</button>
+	</div>
+	<br>
+	<div>
+		<button ng-click='showToDoItems()'>Load Todo Items</button>
+	</div>
+
+		<input type="text" ng-model="todo-text">
+		<button ng-click="createToDo">Create</button>
+
+	<div>
+		<div ng-repeat="item in toDoItems">
+			<p>{{item.todo_text}} - {{item.completion_time}} minutes</p>
+		</div>
+	</div>
+
+
+	
+	<!-- jQuery and Angular Scripts, including ui-router -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+	<!-- Custom Scripts -->
+	<script src="./app.js"></script>
+</body>
+</html>
